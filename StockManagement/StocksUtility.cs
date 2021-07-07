@@ -6,13 +6,21 @@ namespace StockManagement
 {
     class StocksUtility
     {
-        public List<Stock> StockList { get; set; }
-
-        public class Stock
+        public List<Stocks> stockList { get; set; }
+        public LinkedList<UserStocks> userStockList { get; set; }
+        public class Stocks
         {
-            public String CompanyName { get; set; }
-            public int NumberOfShare { get; set; }
-            public int Price { get; set; }
+            public string name { get; set; }
+            public int numberOfShare { get; set; }
+            public int price { get; set; }
+        }
+
+        public class UserStocks
+        {
+            public string shareholder { get; set; }
+            public string name { get; set; }
+            public int numberOfShare { get; set; }
+            public int price { get; set; }
         }
     }
 }

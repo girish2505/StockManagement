@@ -6,12 +6,12 @@
       "Price": 1500
     },
     {
-      "companyName": "Hundai",
+      "name": "Hundai",
       "numberOfShare": 70,
       "Price": 800
     },
     {
-      "companyName": "Britannia",
+      "name": "Britannia",
       "numberOfShare": 40,
       "Price": 350
     }

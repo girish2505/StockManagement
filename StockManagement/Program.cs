@@ -12,25 +12,43 @@ namespace StockManagement
         {
             StockManager stockManager = new StockManager();
             Console.WriteLine("Welcome to Stock Management Program!");
-            string jsonFilePath = @"C:\Users\giris\source\repos\StockManagement\StockManagement\Stocks.json";
-            StocksUtility utility = JsonConvert.DeserializeObject<StocksUtility>(File.ReadAllText(jsonFilePath));
+
+            string jsonFilePathOfStocks = @"C:\Users\giris\source\repos\StockManagement\StockManagement\Stocks.json";
 
 
-            Console.WriteLine("1.Open Stocks \n2.Calculate value of stock \n3.Calculate Total value of stocks\n4.Exit\n");
-            switch (Convert.ToInt32(Console.ReadLine()))
+           
+            while (true)
             {
-                case 1:
-                    stockManager.DisplayStocks(utility.StockList);
-                    break;
-                case 2:
-                    stockManager.CalculateValueOfStock(utility.StockList);
-                    break;
-                case 3:
-                    stockManager.CalculateValueOfAllStocks(utility.StockList);
-                    break;
-                case 4:
-                    Console.WriteLine("Exit");
-                    break;
+                StocksUtility utilityOfStockList = JsonConvert.DeserializeObject<StocksUtility>(File.ReadAllText(jsonFilePathOfStocks));
+                Console.WriteLine("Please Select the Options shown Below\n");
+
+                Console.WriteLine("1.Open Stocks \n2.Calculate value stock \n3.Calculate Total value of stocks\n4.Buy Stocks\n5.Sell Stocks\n6.Print Report\n7.Exit");
+                switch (Convert.ToInt32(Console.ReadLine()))
+                {
+                    case 1:
+                        stockManager.DisplayStocks(utilityOfStockList.stockList);
+                        stockManager.DisplayStocks(utilityOfStockList.userStockList);
+                        break;
+                    case 2:
+                        stockManager.CalculateValueOfEachStock(utilityOfStockList.stockList);
+                        break;
+                    case 3:
+                        stockManager.CalculateValueOfAllStocks(utilityOfStockList.stockList);
+                        break;
+                    case 4:
+                        stockManager.BuyStocks(jsonFilePathOfStocks);
+                        break;
+                    case 5:
+                        stockManager.SellStocks(jsonFilePathOfStocks);
+                        break;
+                    case 6:
+                        stockManager.PrintReport();
+                        break;
+                    case 7:
+                        Console.WriteLine("Exit");
+                        return;
+
+                }
             }
         }
     }
